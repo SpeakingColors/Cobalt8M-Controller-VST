@@ -1,0 +1,105 @@
+id,group,name,kind,a,b,min,max,def,range_src,hw
+cc_1,CC chart,Mod Wheel,cc,1,0,0,127,0,assumed,0
+cc_3,CC chart,LFO3 Rate,cc,3,0,0,127,0,assumed,0
+cc_5,CC chart,Glide,cc,5,0,0,127,0,assumed,0
+cc_7,CC chart,Main Volume,cc,7,0,0,127,0,assumed,0
+cc_9,CC chart,Voice Mode,cc,9,0,0,127,0,assumed,0
+cc_11,CC chart,Expression Pedal,cc,11,0,0,127,0,assumed,0
+cc_13,CC chart,LFO3 Depth,cc,13,0,0,127,0,assumed,0
+cc_14,CC chart,Osc1 Tune,cc,14,0,0,127,0,assumed,0
+cc_15,CC chart,Osc1 Fine,cc,15,0,0,127,0,assumed,0
+cc_16,CC chart,Osc1 Param A,cc,16,0,0,127,0,assumed,0
+cc_17,CC chart,Osc2 Param A,cc,17,0,0,127,0,assumed,0
+cc_18,CC chart,Osc Mix,cc,18,0,0,127,0,assumed,0
+cc_19,CC chart,Osc1 Param B,cc,19,0,0,127,0,assumed,0
+cc_20,CC chart,Osc2 Param B,cc,20,0,0,127,0,assumed,0
+cc_21,CC chart,LFO3 Shape,cc,21,0,0,127,0,assumed,0
+cc_22,CC chart,FEG Attack,cc,22,0,0,127,0,assumed,0
+cc_23,CC chart,FEG Decay,cc,23,0,0,127,0,assumed,0
+cc_24,CC chart,FEG Sustain,cc,24,0,0,127,0,assumed,0
+cc_25,CC chart,FEG Release,cc,25,0,0,127,0,assumed,0
+cc_26,CC chart,AEG Attack,cc,26,0,0,127,0,assumed,0
+cc_27,CC chart,AEG Decay,cc,27,0,0,127,0,assumed,0
+cc_28,CC chart,AEG Sustain,cc,28,0,0,127,0,assumed,0
+cc_29,CC chart,AEG Release,cc,29,0,0,127,0,assumed,0
+cc_30,CC chart,Osc2 Tune,cc,30,0,0,127,0,assumed,0
+cc_31,CC chart,Osc2 Fine,cc,31,0,0,127,0,assumed,0
+cc_32,CC chart,FEG Amount,cc,32,0,0,127,0,assumed,0
+cc_33,CC chart,Morph,cc,33,0,0,127,0,assumed,0
+cc_34,CC chart,Cutoff,cc,34,0,0,127,0,assumed,0
+cc_35,CC chart,Resonance,cc,35,0,0,127,0,assumed,0
+cc_36,CC chart,LFO1 Rate,cc,36,0,0,127,0,assumed,0
+cc_37,CC chart,LFO1 Depth,cc,37,0,0,127,0,assumed,0
+cc_39,CC chart,LFO1 Shape,cc,39,0,0,127,0,assumed,0
+cc_40,CC chart,Octave,cc,40,0,0,127,0,assumed,0
+cc_41,CC chart,Delay Mode,cc,41,0,0,127,0,assumed,0
+cc_42,CC chart,Filter Type,cc,42,0,0,127,0,assumed,0
+cc_43,CC chart,MEG Attack,cc,43,0,0,127,0,assumed,0
+cc_44,CC chart,MEG Decay,cc,44,0,0,127,0,assumed,0
+cc_45,CC chart,MEG Sustain,cc,45,0,0,127,0,assumed,0
+cc_46,CC chart,MEG Release,cc,46,0,0,127,0,assumed,0
+cc_47,CC chart,LFO2 Rate,cc,47,0,0,127,0,assumed,0
+cc_48,CC chart,LFO2 Depth,cc,48,0,0,127,0,assumed,0
+cc_49,CC chart,MEG Depth,cc,49,0,0,127,0,assumed,0
+cc_50,CC chart,LFO2 Shape,cc,50,0,0,127,0,assumed,0
+cc_51,CC chart,AEG Depth,cc,51,0,0,127,0,assumed,0
+cc_52,CC chart,LFO1 MIDI Sync,cc,52,0,0,127,0,assumed,0
+cc_53,CC chart,Arp Gate,cc,53,0,0,127,0,assumed,0
+cc_54,CC chart,LFO2 MIDI Sync,cc,54,0,0,127,0,assumed,0
+cc_55,CC chart,Delay MIDI Sync,cc,55,0,0,127,0,assumed,0
+cc_56,CC chart,LFO1 Mode,cc,56,0,0,127,0,assumed,0
+cc_57,CC chart,LFO2 Mode,cc,57,0,0,127,0,assumed,0
+cc_58,CC chart,Arp Status,cc,58,0,0,127,0,assumed,0
+cc_59,CC chart,Arp Octave,cc,59,0,0,127,0,assumed,0
+cc_60,CC chart,Arp Direction,cc,60,0,0,127,0,assumed,0
+cc_61,CC chart,Arp Division,cc,61,0,0,127,0,assumed,0
+cc_62,CC chart,Osc1 Algorithm,cc,62,0,0,127,0,assumed,0
+cc_63,CC chart,Osc2 Algorithm,cc,63,0,0,127,0,assumed,0
+cc_64,CC chart,Sustain Pedal,cc,64,0,0,127,0,assumed,0
+cc_67,CC chart,Seq Length,cc,67,0,0,127,0,assumed,0
+cc_68,CC chart,Seq Mute,cc,68,0,0,127,0,assumed,0
+cc_69,CC chart,Seq Clear,cc,69,0,0,127,0,assumed,0
+cc_70,CC chart,Seq Hold,cc,70,0,0,127,0,assumed,0
+cc_71,CC chart,Seq Loop,cc,71,0,0,127,0,assumed,0
+cc_72,CC chart,Seq Record,cc,72,0,0,127,0,assumed,0
+cc_73,CC chart,FX Amount,cc,73,0,0,127,0,assumed,0
+cc_75,CC chart,Transpose,cc,75,0,0,127,0,assumed,0
+cc_78,CC chart,Swing,cc,78,0,0,127,0,assumed,0
+cc_79,CC chart,Seq Quantise,cc,79,0,0,127,0,assumed,0
+cc_80,CC chart,AEG Type,cc,80,0,0,127,0,assumed,0
+cc_81,CC chart,FEG Type,cc,81,0,0,127,0,assumed,0
+cc_82,CC chart,MEG Type,cc,82,0,0,127,0,assumed,0
+cc_83,CC chart,Audio In,cc,83,0,0,127,0,assumed,0
+cc_84,CC chart,All EG Attack,cc,84,0,0,127,0,assumed,0
+cc_85,CC chart,All EG Decay,cc,85,0,0,127,0,assumed,0
+cc_86,CC chart,All EG Sustain,cc,86,0,0,127,0,assumed,0
+cc_87,CC chart,All EG Release,cc,87,0,0,127,0,assumed,0
+cc_88,CC chart,ModSlot 1 Depth,cc,88,0,0,127,0,assumed,0
+cc_89,CC chart,ModSlot 2 Depth,cc,89,0,0,127,0,assumed,0
+cc_90,CC chart,ModSlot 3 Depth,cc,90,0,0,127,0,assumed,0
+cc_91,CC chart,ModSlot 4 Depth,cc,91,0,0,127,0,assumed,0
+cc_92,CC chart,ModSlot 5 Depth,cc,92,0,0,127,0,assumed,0
+cc_93,CC chart,ModSlot 6 Depth,cc,93,0,0,127,0,assumed,0
+cc_94,CC chart,ModSlot 7 Depth,cc,94,0,0,127,0,assumed,0
+cc_95,CC chart,ModSlot 8 Depth,cc,95,0,0,127,0,assumed,0
+cc_96,CC chart,Chord Mode,cc,96,0,0,127,0,assumed,0
+cc_100,CC chart,ModSlot 1 Source,cc,100,0,0,127,0,assumed,0
+cc_101,CC chart,ModSlot 2 Source,cc,101,0,0,127,0,assumed,0
+cc_102,CC chart,ModSlot 3 Source,cc,102,0,0,127,0,assumed,0
+cc_103,CC chart,ModSlot 4 Source,cc,103,0,0,127,0,assumed,0
+cc_104,CC chart,ModSlot 5 Source,cc,104,0,0,127,0,assumed,0
+cc_105,CC chart,ModSlot 6 Source,cc,105,0,0,127,0,assumed,0
+cc_106,CC chart,ModSlot 7 Source,cc,106,0,0,127,0,assumed,0
+cc_107,CC chart,ModSlot 8 Source,cc,107,0,0,127,0,assumed,0
+cc_108,CC chart,ModSlot 1 Dest,cc,108,0,0,127,0,assumed,0
+cc_109,CC chart,ModSlot 2 Dest,cc,109,0,0,127,0,assumed,0
+cc_110,CC chart,ModSlot 3 Dest,cc,110,0,0,127,0,assumed,0
+cc_111,CC chart,ModSlot 4 Dest,cc,111,0,0,127,0,assumed,0
+cc_112,CC chart,ModSlot 5 Dest,cc,112,0,0,127,0,assumed,0
+cc_113,CC chart,ModSlot 6 Dest,cc,113,0,0,127,0,assumed,0
+cc_114,CC chart,ModSlot 7 Dest,cc,114,0,0,127,0,assumed,0
+cc_115,CC chart,ModSlot 8 Dest,cc,115,0,0,127,0,assumed,0
+cc_116,CC chart,Joystick X+,cc,116,0,0,127,0,assumed,0
+cc_117,CC chart,Joystick X-,cc,117,0,0,127,0,assumed,0
+cc_118,CC chart,Joystick Y-,cc,118,0,0,127,0,assumed,0
+cc_119,CC chart,Patch Gain,cc,119,0,0,127,0,assumed,0
