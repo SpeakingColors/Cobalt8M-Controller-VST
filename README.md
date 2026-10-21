@@ -4,6 +4,10 @@
 
 Controller plugin for the Modal Cobalt8M.
 
+<p align="center"><img src="docs/screenshot.png" alt="Cobalt8M Controller editor" width="900"><br><sub>Screenshot of the interactive mockup in docs/mockups.</sub></p>
+
+**Manual:** [PDF, opens in the browser](https://github.com/SpeakingColors/Cobalt8M-Controller-VST/blob/main/docs/Cobalt8M-Controller-VST-manual.pdf)
+
 ## Status
 **Early build v0.1 (pre-release on the Releases page).** A MIDI controller plugin (VST3 and standalone) that sends and receives the CC messages listed in [map/params.csv](map/params.csv).
 
