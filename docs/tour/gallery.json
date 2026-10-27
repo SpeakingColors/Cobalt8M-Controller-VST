@@ -1,0 +1,44 @@
+[
+ {
+  "title": "Cobalt8M controller · Modulation",
+  "img": "gallery_1.png",
+  "file": "Cobalt.dc.html",
+  "w": 1668,
+  "h": 986
+ },
+ {
+  "title": "Cobalt8M controller · Sequencer",
+  "img": "gallery_2.png",
+  "file": "CobaltSeq.dc.html",
+  "w": 1668,
+  "h": 1202
+ },
+ {
+  "title": "Cobalt8M controller · FX",
+  "img": "gallery_3.png",
+  "file": "CobaltFX.dc.html",
+  "w": 1668,
+  "h": 1139
+ },
+ {
+  "title": "Cobalt8M controller · Keyboard",
+  "img": "gallery_4.png",
+  "file": "CobaltKeys.dc.html",
+  "w": 1668,
+  "h": 1112
+ },
+ {
+  "title": "Cobalt8M controller · Preset manager",
+  "img": "gallery_5.png",
+  "file": "CobaltPresets.dc.html",
+  "w": 1668,
+  "h": 1137
+ },
+ {
+  "title": "Cobalt8M controller · Settings",
+  "img": "gallery_6.png",
+  "file": "CobaltSettings.dc.html",
+  "w": 1668,
+  "h": 1431
+ }
+]
