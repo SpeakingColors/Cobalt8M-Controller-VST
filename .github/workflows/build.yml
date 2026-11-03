@@ -4,6 +4,9 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: cobalt8m-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   core-tests:
     runs-on: ubuntu-24.04
@@ -14,7 +17,7 @@ jobs:
     needs: core-tests
     strategy:
       matrix:
-        os: [ubuntu-24.04, windows-latest, macos-latest]
+        os: [ubuntu-24.04, windows-latest, macos-15]
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -23,12 +26,17 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y cmake ninja-build g++ pkg-config libasound2-dev libx11-dev libxinerama-dev libxext-dev \
-            libxrandr-dev libxcursor-dev libfreetype-dev libfontconfig1-dev libgl-dev
+            libxrandr-dev libxcursor-dev libfreetype-dev libfontconfig1-dev libgl-dev xvfb
       - run: git clone --depth 1 --branch 8.0.16-security https://github.com/juce-framework/JUCE.git third_party/JUCE
       - shell: bash
         run: |
           set -o pipefail
           (cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --parallel 4) 2>&1 | tee build.log
+      - name: Editor self test (Linux, offscreen)
+        if: runner.os == 'Linux'
+        run: |
+          cmake --build build --target Cobalt8MSnap --parallel 4
+          xvfb-run -a build/Cobalt8MSnap_artefacts/Release/Cobalt8MSnap --selftest
       - if: failure()
         shell: bash
         run: grep -E "error|Error" build.log | head -15 | while IFS= read -r l; do echo "::error::${l:0:400}"; done

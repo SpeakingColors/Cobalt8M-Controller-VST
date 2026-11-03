@@ -38,14 +38,14 @@ def tour_story(tdir, h2, body, esc):
 
 
 def gallery_story(tdir, h2, body, esc, device=''):
-    """Window pictures of the interactive mockup pages (docs/tour/gallery.json, from tools/shoot_gallery.js).
+    """Window pictures of the plugin pages (docs/tour/gallery.json; the PNGs come from the compiled editor via tools/snap.cpp).
     Only the page titles of the mockup files are used as captions; nothing is written by hand."""
     p = os.path.join(tdir, 'gallery.json')
     if not os.path.exists(p): return []
     d = json.load(open(p))
     cap = ParagraphStyle('gc', parent=body, fontName='Helvetica-Bold', fontSize=10.5, textColor=TEAL, spaceBefore=8, spaceAfter=3)
     out = [PageBreak(), Paragraph('Interface tour', h2),
-           Paragraph(esc('One picture per page of the interactive mockup (docs/mockups). The mockup mirrors the plugin window; the compiled plugin can differ by a few pixels of layout.'), body), Spacer(1, 4)]
+           Paragraph(esc('One picture per page of the plugin window, taken from the compiled editor drawn offscreen (tools/snap.cpp, run as: snap <dir> full). The window follows the interactive mockup in docs/mockups.'), body), Spacer(1, 4)]
     for g in d:
         name = g['title'].split('·', 1)[-1].strip() if '·' in g['title'] else g['title']
         out.append(KeepTogether([Paragraph(esc(name), cap), _img(os.path.join(tdir, g['img']), 174 * mm, 120 * mm), Spacer(1, 6)]))

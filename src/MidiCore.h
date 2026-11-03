@@ -2,6 +2,7 @@
 // Only things listed in map/params.csv are ever sent. Nothing here invents SysEx.
 #pragma once
 #include <algorithm>
+#include <array>
 #include <cstdint>
 #include <optional>
 #include <set>
@@ -94,6 +95,37 @@ inline std::vector<Msg> encode(const Param& p, int ch, int val)
     if (p.kind == Kind::NRPN) return nrpn(ch, p.a, p.b, val);
     return {};
 }
+
+// Program change as the manual describes it: a bank change (0 to 4, CC 0) followed by a program change (0 to 99, two bytes).
+struct Raw { uint8_t b[3] = { 0, 0, 0 }; int len = 3; };
+inline std::vector<Raw> programChange(int ch, int bank, int program)
+{
+    Raw a; a.b[0] = uint8_t(0xB0 | ((std::clamp(ch, 1, 16) - 1) & 15)); a.b[1] = 0; a.b[2] = uint8_t(std::clamp(bank, 0, 4));
+    Raw p; p.b[0] = uint8_t(0xC0 | ((std::clamp(ch, 1, 16) - 1) & 15)); p.b[1] = uint8_t(std::clamp(program, 0, 99)); p.len = 2;
+    return { a, p };
+}
+
+// Loop guard. When the plugin passes MIDI to a synth that sends it back to the same track (USB soft thru), the same message
+// would circle forever. Every message the plugin sends is remembered; an identical message arriving within the window
+// (a few milliseconds to a few tens of milliseconds, the length of the round trip) is the echo and is dropped, once per send.
+// Fixed size, no allocation: safe on the audio thread.
+class LoopGuard
+{
+public:
+    void setWindow(int64_t samples) { window = samples; }
+    void reset() { for (auto& e : ring) e.used = false; }
+    void sent(const uint8_t* b, int len, int64_t t) { auto& e = ring[pos]; pos = (pos + 1) % ring.size(); e.key = key(b, len); e.t = t; e.used = true; }
+    bool isEcho(const uint8_t* b, int len, int64_t t)
+    {
+        const uint32_t k = key(b, len);
+        for (auto& e : ring) if (e.used && e.key == k && t >= e.t && t - e.t <= window) { e.used = false; return true; }
+        return false;
+    }
+private:
+    static uint32_t key(const uint8_t* b, int len) { return uint32_t(b[0]) | (uint32_t(len > 1 ? b[1] : 0) << 8) | (uint32_t(len > 2 ? b[2] : 0) << 16) | (uint32_t(len) << 24); }
+    struct E { uint32_t key = 0; int64_t t = 0; bool used = false; };
+    std::array<E, 64> ring {}; size_t pos = 0; int64_t window = 1440;   // 30 ms at 48 kHz
+};
 
 struct Event { int paramIndex = -1; int value = 0; };
 

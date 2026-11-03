@@ -30,6 +30,14 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/third_party/JUCE/CMakeLists.txt)
         VST3_CATEGORIES Tools
         COPY_PLUGIN_AFTER_BUILD FALSE)
     target_sources(Cobalt8MController PRIVATE src/Plugin.cpp)
+
+    # Offscreen snapshot tool (not shipped): renders every editor page to PNG, run under xvfb-run
+    juce_add_console_app(Cobalt8MSnap PRODUCT_NAME "snap")
+    target_sources(Cobalt8MSnap PRIVATE tools/snap.cpp)
+    target_include_directories(Cobalt8MSnap PRIVATE src)
+    target_compile_definitions(Cobalt8MSnap PUBLIC JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_USE_XINERAMA=0 JUCE_DISPLAY_SPLASH_SCREEN=0)
+    target_link_libraries(Cobalt8MSnap PRIVATE Cobalt8MControllerData cat_ui::cat_ui juce::juce_audio_utils juce::juce_recommended_config_flags)
+    set_target_properties(Cobalt8MSnap PROPERTIES EXCLUDE_FROM_ALL TRUE)
     target_include_directories(Cobalt8MController PRIVATE src)
     target_compile_definitions(Cobalt8MController PUBLIC JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE_DISPLAY_SPLASH_SCREEN=0)
     target_link_libraries(Cobalt8MController PRIVATE Cobalt8MControllerData cat_ui::cat_ui juce::juce_audio_utils juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)

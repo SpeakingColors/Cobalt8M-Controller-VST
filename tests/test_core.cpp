@@ -42,6 +42,21 @@ int main(int argc, char** argv)
         Decoder dd(r.params); std::optional<Event> last; for (auto& msg : encode(p, 1, p.maxV)) last = dd.feedCC(msg.d1, msg.d2);
         CHECK(last && r.params[size_t(last->paramIndex)].id == p.id && last->value == p.maxV);
     }
+    // program change: bank then program, clamped
+    { auto pc = programChange(2, 3, 56); CHECK(pc.size() == 2 && pc[0].b[0] == 0xB1 && pc[0].b[1] == 0 && pc[0].b[2] == 3 && pc[1].b[0] == 0xC1 && pc[1].b[1] == 56 && pc[1].len == 2);
+      pc = programChange(1, 9, 500); CHECK(pc[0].b[2] == 4 && pc[1].b[1] == 99); }
+    // loop guard
+    { LoopGuard g; g.setWindow(100); const uint8_t on[3] = { 0x90, 60, 100 }, off[3] = { 0x80, 60, 0 }, cc7[3] = { 0xB0, 7, 90 };
+      CHECK(!g.isEcho(on, 3, 0));                          // nothing sent yet
+      g.sent(on, 3, 1000);
+      CHECK(!g.isEcho(off, 3, 1010));                      // a different message is not an echo
+      CHECK(!g.isEcho(on, 3, 1500));                       // too late: a real new message
+      g.sent(on, 3, 2000); CHECK(g.isEcho(on, 3, 2050));   // the echo
+      CHECK(!g.isEcho(on, 3, 2060));                       // only one echo per send
+      g.sent(cc7, 3, 3000); CHECK(!g.isEcho(cc7, 3, 2999)); // an earlier message cannot be an echo of a later send
+      CHECK(g.isEcho(cc7, 3, 3100));
+      for (int i = 0; i < 200; ++i) { const uint8_t m[3] = { 0xB0, 1, uint8_t(i & 127) }; g.sent(m, 3, 5000 + i); }   // ring wraps without trouble
+      const uint8_t last[3] = { 0xB0, 1, uint8_t(199 & 127) }; CHECK(g.isEcho(last, 3, 5250)); g.reset(); CHECK(!g.isEcho(last, 3, 5250)); }
     // the real map of this repo
     if (argc > 1)
     {
