@@ -13,9 +13,9 @@ Controller plugin for the Modal Cobalt8M.
 ## Status
 **Early build v0.1 (pre-release on the Releases page).** A MIDI controller plugin (VST3 and standalone) that sends and receives the CC messages listed in [map/params.csv](map/params.csv).
 
-- 104 parameters, taken from: Modal COBALT8M (manual v2 CC chart). 
+- 104 parameters, taken from: Modal COBALT8M (manual v2 CC chart).
 - **None are tested on the real device yet.** The map only holds what the source above lists; ranges the manual does not print are assumed to be 0 to 127 and are marked that way in the plugin.
-- No SysEx and no patch librarian yet. Nothing is sent that is not in the map.
+- No SysEx and no patch librarian yet.
 - Not tested in a DAW yet. Builds in CI on Linux, Windows and macOS; the editor was rendered and click-tested offscreen on Linux only.
 
 The window is the approved design (docs/mockups) drawn natively: Preset Manager, Modulation, FX, Sequencer, Keyboard and Settings pages. Controls that have a documented CC send it; the rest are drawn as in the design but send nothing yet (their info bubble says so, see the roadmap).
