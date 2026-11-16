@@ -89,7 +89,7 @@ public:
         {
             const auto msg = meta.getMessage(); const auto* raw = msg.getRawData(); const int len = msg.getRawDataSize();
             if (len >= 1 && len <= 3 && guard.isEcho(raw, len, clock + meta.samplePosition)) continue;
-            if (msg.isController())
+            if (msg.isController() && msg.getChannel() == juce::jlimit(1, 16, channelParam->get()))   // other channels do not move the knobs
                 if (auto e = decoder.feedCC(msg.getControllerNumber(), msg.getControllerValue()))
                     for (size_t i = 0; i < slots.size(); ++i) if (slots[i].map == e->paramIndex) { incoming[i] = e->value; break; }
             passthru.addEvent(msg, meta.samplePosition);

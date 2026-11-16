@@ -127,6 +127,9 @@ private:
     std::array<E, 64> ring {}; size_t pos = 0; int64_t window = 1440;   // 30 ms at 48 kHz
 };
 
+// True when a channel message (status byte 0x80 to 0xEF) is on channel ch (1..16). Used so CC from other channels do not move the knobs.
+inline bool onChannel(uint8_t status, int ch) { return status >= 0x80 && status < 0xF0 && (status & 15) == ((std::clamp(ch, 1, 16) - 1) & 15); }
+
 struct Event { int paramIndex = -1; int value = 0; };
 
 // Turns incoming CC messages into parameter events. Follows the NRPN CC 99 / 98 / 6 sequence.

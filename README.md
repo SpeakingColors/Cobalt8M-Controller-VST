@@ -18,9 +18,12 @@ Controller plugin for the Modal Cobalt8M.
 - No SysEx and no patch librarian yet.
 - Not tested in a DAW yet. Builds in CI on Linux, Windows and macOS; the editor was rendered and click-tested offscreen on Linux only.
 
+## Download
+Early builds are on the [Releases page](https://github.com/SpeakingColors/Cobalt8M-Controller-VST/releases).
+
 The window is the approved design (docs/mockups) drawn natively: Preset Manager, Modulation, FX, Sequencer, Keyboard and Settings pages. Controls that have a documented CC send it; the rest are drawn as in the design but send nothing yet (their info bubble says so, see the roadmap).
 
-How it behaves: every mapped entry is an automatable parameter. Moving it sends MIDI to the device, and incoming CC from the device moves it. Incoming MIDI is passed on, and a loop guard drops a message identical to one just sent (a synth echoing over USB soft thru). Clicking a preset sends a bank change then a program change; the piano plays notes. At most 16 parameters are sent per audio block so the device is not flooded. Turn on CC receive and transmit on the device.
+How it behaves: every mapped entry is an automatable parameter. Moving it sends MIDI to the device, and incoming CC from the device moves it. Incoming CC moves a parameter only when it arrives on the selected MIDI channel. Incoming MIDI is passed on, and a loop guard drops a message identical to one just sent (a synth echoing over USB soft thru). Clicking a preset sends a bank change then a program change; the piano plays notes. At most 16 parameters are sent per audio block so the device is not flooded. Turn on CC receive and transmit on the device.
 
 Build: `sh tests/run.sh` runs the pure C++ tests (no JUCE needed). `python3 tools/port_mockups.py` regenerates `src/PageData.h` from the mockups. The plugin needs JUCE 8: clone it into `third_party/JUCE`, then `cmake -B build && cmake --build build`. Changing a parameter means editing `map/params.csv` only.
 

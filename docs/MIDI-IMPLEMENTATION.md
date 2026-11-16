@@ -4,137 +4,139 @@ Source tag for every CC row below: official: Modal COBALT8 manual v2 (https://ww
 
 Original source note: COBALT8 manual v2, "MIDI" chapter and "MIDI CC Implementation Chart" (pages 62 to 65), plus the screen map (pages 20 and 21). A dash means the chart lists no function for that CC. Check against the real unit before relying on it in code.
 
+Verification note: the chart below was transcribed in an earlier session. In the latest review the manufacturer PDF (cobalt8M_MANUAL_v2.pdf on modalelectronics.com) could not be fetched from the build environment, so the rows were checked only for agreement with map/params.csv (tests/check_docs.py), not re-read against the PDF. Re-check them against the PDF before treating them as final. No row has been captured from the owner's device, so none is hardware verified.
+
 ## CC chart
-| CC | Function |
-|---|---|
-| 0 | Bank Change |
-| 1 | Mod Wheel |
-| 2 | - |
-| 3 | LFO3 Rate |
-| 4 | - |
-| 5 | Glide |
-| 6 | - |
-| 7 | Main Volume |
-| 8 | (blank in chart) |
-| 9 | Voice Mode |
-| 10 | - |
-| 11 | Expression Pedal |
-| 12 | - |
-| 13 | LFO3 Depth |
-| 14 | Osc1 Tune |
-| 15 | Osc1 Fine |
-| 16 | Osc1 Param A |
-| 17 | Osc2 Param A |
-| 18 | Osc Mix |
-| 19 | Osc1 Param B |
-| 20 | Osc2 Param B |
-| 21 | LFO3 Shape |
-| 22 | FEG Attack |
-| 23 | FEG Decay |
-| 24 | FEG Sustain |
-| 25 | FEG Release |
-| 26 | AEG Attack |
-| 27 | AEG Decay |
-| 28 | AEG Sustain |
-| 29 | AEG Release |
-| 30 | Osc2 Tune |
-| 31 | Osc2 Fine |
-| 32 | FEG Amount |
-| 33 | Morph |
-| 34 | Cutoff |
-| 35 | Resonance |
-| 36 | LFO1 Rate |
-| 37 | LFO1 Depth |
-| 38 | - |
-| 39 | LFO1 Shape |
-| 40 | Octave |
-| 41 | Delay Mode |
-| 42 | Filter Type |
-| 43 | MEG Attack |
-| 44 | MEG Decay |
-| 45 | MEG Sustain |
-| 46 | MEG Release |
-| 47 | LFO2 Rate |
-| 48 | LFO2 Depth |
-| 49 | MEG Depth |
-| 50 | LFO2 Shape |
-| 51 | AEG Depth |
-| 52 | LFO1 MIDI Sync |
-| 53 | Arp Gate |
-| 54 | LFO2 MIDI Sync |
-| 55 | Delay MIDI Sync |
-| 56 | LFO1 Mode |
-| 57 | LFO2 Mode |
-| 58 | Arp Status |
-| 59 | Arp Octave |
-| 60 | Arp Direction |
-| 61 | Arp Division |
-| 62 | Osc1 Algorithm |
-| 63 | Osc2 Algorithm |
-| 64 | Sustain Pedal |
-| 65 | - |
-| 66 | - |
-| 67 | Seq Length |
-| 68 | Seq Mute |
-| 69 | Seq Clear |
-| 70 | Seq Hold |
-| 71 | Seq Loop |
-| 72 | Seq Record |
-| 73 | FX Amount |
-| 74 | - |
-| 75 | Transpose |
-| 76 | - |
-| 77 | - |
-| 78 | Swing |
-| 79 | Seq Quantise |
-| 80 | AEG Type |
-| 81 | FEG Type |
-| 82 | MEG Type |
-| 83 | Audio In |
-| 84 | All EG Attack |
-| 85 | All EG Decay |
-| 86 | All EG Sustain |
-| 87 | All EG Release |
-| 88 | ModSlot 1 Depth |
-| 89 | ModSlot 2 Depth |
-| 90 | ModSlot 3 Depth |
-| 91 | ModSlot 4 Depth |
-| 92 | ModSlot 5 Depth |
-| 93 | ModSlot 6 Depth |
-| 94 | ModSlot 7 Depth |
-| 95 | ModSlot 8 Depth |
-| 96 | Chord Mode |
-| 97 | - |
-| 98 | - |
-| 99 | - |
-| 100 | ModSlot 1 Source |
-| 101 | ModSlot 2 Source |
-| 102 | ModSlot 3 Source |
-| 103 | ModSlot 4 Source |
-| 104 | ModSlot 5 Source |
-| 105 | ModSlot 6 Source |
-| 106 | ModSlot 7 Source |
-| 107 | ModSlot 8 Source |
-| 108 | ModSlot 1 Dest |
-| 109 | ModSlot 2 Dest |
-| 110 | ModSlot 3 Dest |
-| 111 | ModSlot 4 Dest |
-| 112 | ModSlot 5 Dest |
-| 113 | ModSlot 6 Dest |
-| 114 | ModSlot 7 Dest |
-| 115 | ModSlot 8 Dest |
-| 116 | Joystick X+ |
-| 117 | Joystick X- |
-| 118 | Joystick Y- |
-| 119 | Patch Gain |
-| 120 | All Sound Off |
-| 121 | Reset All Controllers |
-| 122 | - |
-| 123 | All Notes Off |
-| 124 | Omni Off |
-| 125 | Omni On |
-| 126 | - |
-| 127 | - |
+| CC | Function | Status |
+|---|---|---|
+| 0 | Bank Change | documented (chart, standard function); not in map/params.csv, bank change is sent by the preset buttons; untested |
+| 1 | Mod Wheel | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 2 | - | not listed in chart, unmapped |
+| 3 | LFO3 Rate | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 4 | - | not listed in chart, unmapped |
+| 5 | Glide | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 6 | - | not listed in chart, unmapped |
+| 7 | Main Volume | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 8 | (blank in chart) | not listed in chart, unmapped |
+| 9 | Voice Mode | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 10 | - | not listed in chart, unmapped |
+| 11 | Expression Pedal | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 12 | - | not listed in chart, unmapped |
+| 13 | LFO3 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 14 | Osc1 Tune | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 15 | Osc1 Fine | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 16 | Osc1 Param A | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 17 | Osc2 Param A | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 18 | Osc Mix | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 19 | Osc1 Param B | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 20 | Osc2 Param B | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 21 | LFO3 Shape | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 22 | FEG Attack | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 23 | FEG Decay | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 24 | FEG Sustain | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 25 | FEG Release | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 26 | AEG Attack | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 27 | AEG Decay | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 28 | AEG Sustain | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 29 | AEG Release | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 30 | Osc2 Tune | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 31 | Osc2 Fine | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 32 | FEG Amount | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 33 | Morph | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 34 | Cutoff | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 35 | Resonance | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 36 | LFO1 Rate | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 37 | LFO1 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 38 | - | not listed in chart, unmapped |
+| 39 | LFO1 Shape | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 40 | Octave | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 41 | Delay Mode | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 42 | Filter Type | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 43 | MEG Attack | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 44 | MEG Decay | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 45 | MEG Sustain | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 46 | MEG Release | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 47 | LFO2 Rate | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 48 | LFO2 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 49 | MEG Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 50 | LFO2 Shape | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 51 | AEG Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 52 | LFO1 MIDI Sync | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 53 | Arp Gate | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 54 | LFO2 MIDI Sync | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 55 | Delay MIDI Sync | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 56 | LFO1 Mode | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 57 | LFO2 Mode | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 58 | Arp Status | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 59 | Arp Octave | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 60 | Arp Direction | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 61 | Arp Division | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 62 | Osc1 Algorithm | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 63 | Osc2 Algorithm | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 64 | Sustain Pedal | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 65 | - | not listed in chart, unmapped |
+| 66 | - | not listed in chart, unmapped |
+| 67 | Seq Length | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 68 | Seq Mute | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 69 | Seq Clear | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 70 | Seq Hold | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 71 | Seq Loop | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 72 | Seq Record | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 73 | FX Amount | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 74 | - | not listed in chart, unmapped |
+| 75 | Transpose | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 76 | - | not listed in chart, unmapped |
+| 77 | - | not listed in chart, unmapped |
+| 78 | Swing | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 79 | Seq Quantise | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 80 | AEG Type | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 81 | FEG Type | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 82 | MEG Type | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 83 | Audio In | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 84 | All EG Attack | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 85 | All EG Decay | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 86 | All EG Sustain | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 87 | All EG Release | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 88 | ModSlot 1 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 89 | ModSlot 2 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 90 | ModSlot 3 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 91 | ModSlot 4 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 92 | ModSlot 5 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 93 | ModSlot 6 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 94 | ModSlot 7 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 95 | ModSlot 8 Depth | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 96 | Chord Mode | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 97 | - | not listed in chart, unmapped |
+| 98 | - | not listed in chart, unmapped |
+| 99 | - | not listed in chart, unmapped |
+| 100 | ModSlot 1 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 101 | ModSlot 2 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 102 | ModSlot 3 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 103 | ModSlot 4 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 104 | ModSlot 5 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 105 | ModSlot 6 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 106 | ModSlot 7 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 107 | ModSlot 8 Source | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 108 | ModSlot 1 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 109 | ModSlot 2 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 110 | ModSlot 3 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 111 | ModSlot 4 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 112 | ModSlot 5 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 113 | ModSlot 6 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 114 | ModSlot 7 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 115 | ModSlot 8 Dest | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 116 | Joystick X+ | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 117 | Joystick X- | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 118 | Joystick Y- | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 119 | Patch Gain | documented (chart); untested on hardware; range assumed 0 to 127 |
+| 120 | All Sound Off | documented (chart, standard function); not in map/params.csv, bank change is sent by the preset buttons; untested |
+| 121 | Reset All Controllers | documented (chart, standard function); not in map/params.csv, bank change is sent by the preset buttons; untested |
+| 122 | - | not listed in chart, unmapped |
+| 123 | All Notes Off | documented (chart, standard function); not in map/params.csv, bank change is sent by the preset buttons; untested |
+| 124 | Omni Off | documented (chart, standard function); not in map/params.csv, bank change is sent by the preset buttons; untested |
+| 125 | Omni On | documented (chart, standard function); not in map/params.csv, bank change is sent by the preset buttons; untested |
+| 126 | - | not listed in chart, unmapped |
+| 127 | - | not listed in chart, unmapped |
 
 Notes on the chart:
 - The printed chart has no entry for Joystick Y+ (only X+, X- and Y-). Test on the unit.

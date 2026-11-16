@@ -57,6 +57,8 @@ int main(int argc, char** argv)
       CHECK(g.isEcho(cc7, 3, 3100));
       for (int i = 0; i < 200; ++i) { const uint8_t m[3] = { 0xB0, 1, uint8_t(i & 127) }; g.sent(m, 3, 5000 + i); }   // ring wraps without trouble
       const uint8_t last[3] = { 0xB0, 1, uint8_t(199 & 127) }; CHECK(g.isEcho(last, 3, 5250)); g.reset(); CHECK(!g.isEcho(last, 3, 5250)); }
+    // channel filter
+    CHECK(onChannel(0xB0, 1) && onChannel(0xBF, 16) && !onChannel(0xB1, 1) && !onChannel(0xF8, 1) && !onChannel(0x40, 1) && onChannel(0xB0, 0));
     // the real map of this repo
     if (argc > 1)
     {
