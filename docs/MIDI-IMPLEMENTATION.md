@@ -1,6 +1,8 @@
 # Modal Cobalt8M: MIDI
 
-Source: COBALT8 manual v2, "MIDI" chapter and "MIDI CC Implementation Chart" (pages 62 to 65), plus the screen map (pages 20 and 21). A dash means the chart lists no function for that CC. Check against the real unit before relying on it in code.
+Source tag for every CC row below: official: Modal COBALT8 manual v2 (https://www.modalelectronics.com/wp-content/uploads/2022/11/cobalt8_MANUAL_v2.pdf), "MIDI CC Implementation Chart". Important: that manual is for the Cobalt8 family. We assume the Cobalt8M (the module) uses the same chart because it shares the platform. That is an inference, not confirmed by a Cobalt8M-specific document. Also: the rows were transcribed earlier and could not be re-checked against the PDF in the latest review (the link returned a 404 for the automated fetch, so check that the link still works). Every row is untested on hardware.
+
+Original source note: COBALT8 manual v2, "MIDI" chapter and "MIDI CC Implementation Chart" (pages 62 to 65), plus the screen map (pages 20 and 21). A dash means the chart lists no function for that CC. Check against the real unit before relying on it in code.
 
 ## CC chart
 | CC | Function |
@@ -139,7 +141,7 @@ Notes on the chart:
 - CC 8 is blank in the printed chart (no dash, no name).
 - The manual gives no value ranges or scaling per CC. Capture them from the unit.
 
-## MIDI behaviour (from the manual)
+## MIDI behaviour (official: same COBALT8 manual v2, MIDI chapter; same Cobalt8 vs Cobalt8M caveat; untested on hardware)
 - Channel: set in the on-screen settings or in MODALapp.
 - All encoders send the matching CC when changed (depends on SHIFT or panel state). Keys send notes for their octave and scale.
 - The keyboard sends channel aftertouch; the joystick can send pitch bend.
@@ -150,8 +152,12 @@ Notes on the chart:
 - MIDI In Omni: in the Settings pages or the MODALapp Settings tab.
 - Settings pages list: Channel, Omni, Pitchbend Range, MPE Mode, MPE Master Channel, MPE Num Channels, MPE Pitchbend Range, DIN In/Out Filters, DIN Thru, USB Thru, Arp/Seq Out, MIDI-in Oct Offset, MIDI-in Monitor.
 
-## Patch dump (not from the manual)
-From our own capture notes: patch dump is 137 bytes with header `F0 00 21 07 19 02 04 [slot]`. Still to capture: patch request, patch name, factory reset, and the FX SysEx details. Treat as unverified until the capture files are checked.
+## Patch dump (UNVERIFIED, not from the manual)
+Source: UNVERIFIED. We have no capture file in this repo, so this cannot be called an owner capture. The notes say: patch dump is 137 bytes with header `F0 00 21 07 19 02 04 [slot]`. Still to capture: patch request, patch name, factory reset, and the FX SysEx details. Treat as unverified until the capture files are checked.
 
 ## Screen map (parameter groups)
 Patch preset (load, save, init, randomise, linked sequence); Keyboard/Voice (voice mode, glide, octave, transpose, chord latch, vintage, voice width, chord invert, sustain, velocity, aftertouch, note and expression assigns with depths); Osc1 and Osc2 (algorithm, param A, param B, tune, fine); Osc general (mix, drift, free run); FX presets, FX-1 to FX-3 (type A to F, delay mode, delay sync, swap) and level; Arpeggiator (status, division, direction, octave, swing, gate); Sequencer (play, record, mode, length, step length, number of steps, step mode, overdub, mute, clear, four animation lanes, loop, hold); Clock (tempo); Audio (main volume, patch gain, headphone level, gain boost, audio in volume and to FX); Filter (cutoff, reso, morph, type, cutoff scaling); Filter, Amp and Mod envelopes (amount/depth, ADSR, type, assign); LFO1 to LFO3 (shape, rate, depth, mode, sync, assign); 8 mod slots (status, source, destination, depth, clear); Mod general (note to cutoff, Y+ to LFO1 depth, aftertouch to cutoff, velocity to amp EG amount); Joystick (XY lock, pitch bend status, X+/X-/Y+/Y- assign and depth).
+
+
+## NRPN
+No NRPN is documented in the manual pages we used, and the plugin sends none. Do not add NRPN entries without an official document or an owner capture.
