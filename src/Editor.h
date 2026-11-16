@@ -386,7 +386,7 @@ private:
         {
             if (r == 1) proc.setUi(ctled::kUiBubbles, proc.getUi(ctled::kUiBubbles, 1) ? 0 : 1);
             if (r == 2) juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::InfoIcon, "Cobalt8M Controller",
-                "Studio 87. Free and open source (AGPL-3.0). Collects nothing and makes no network connection.\n\n"
+                "Studio 87. Free and open source (AGPL-3.0).\n\n"
                 "Values and CC numbers come from the maker's manual. Nothing is sent that is not in the map.\n"
                 "Presets are the device's own; project data is saved with your DAW project.\nSupport: ko-fi.com/studio87");
         });

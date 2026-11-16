@@ -20,4 +20,4 @@ Cobalt8M Controller sends and receives the MIDI messages (CC and NRPN) of the Mo
 
 # Window
 - Resize by dragging any edge or corner; the shape stays the same. Hover a control for about a second for its address (CC or NRPN number) and whether it was tested on the device.
-- Free and open source. The plugin collects no data and never touches the network.
+- Free and open source (AGPL-3.0-or-later).
