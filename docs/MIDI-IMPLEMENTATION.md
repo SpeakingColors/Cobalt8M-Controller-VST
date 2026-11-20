@@ -1,10 +1,10 @@
 # Modal Cobalt8M: MIDI
 
-Source tag for every CC row below: official: Modal COBALT8 manual v2 (https://www.modalelectronics.com/wp-content/uploads/2022/11/cobalt8_MANUAL_v2.pdf), "MIDI CC Implementation Chart". Important: that manual is for the Cobalt8 family. We assume the Cobalt8M (the module) uses the same chart because it shares the platform. That is an inference, not confirmed by a Cobalt8M-specific document. Also: the rows were transcribed earlier and could not be re-checked against the PDF in the latest review (the link returned a 404 for the automated fetch, so check that the link still works). Every row is untested on hardware.
+Source tag for every CC row below: official: Modal COBALT8M manual v2 (https://modalelectronics.com/wp-content/uploads/2025/05/cobalt8M_MANUAL_v2.pdf, 42 pages), "MIDI CC Implemention Chart" (printed page 64) and the MIDI chapter (printed pages 62 and 63). This is the Cobalt8M's own manual. Every row below was compared with that chart on 2026-11-20. Every row is untested on hardware.
 
-Original source note: COBALT8 manual v2, "MIDI" chapter and "MIDI CC Implementation Chart" (pages 62 to 65), plus the screen map (pages 20 and 21). A dash means the chart lists no function for that CC. Check against the real unit before relying on it in code.
+Earlier versions of this file were transcribed from the COBALT8 (non-M) manual v2; the Cobalt8M manual's chart gives the same numbers for all 104 mapped CCs. A dash means the chart lists no function for that CC.
 
-Verification note: the chart below was transcribed in an earlier session. In the latest review the manufacturer PDF (cobalt8M_MANUAL_v2.pdf on modalelectronics.com) could not be fetched from the build environment, so the rows were checked only for agreement with map/params.csv (tests/check_docs.py), not re-read against the PDF. Re-check them against the PDF before treating them as final. No row has been captured from the owner's device, so none is hardware verified.
+Verification note (2026-11-20): all 104 CC rows in `map/params.csv` match the Cobalt8M chart by number and function name. The chart also lists messages that are not parameters and are not in the map: CC 0 Bank Change, CC 120 All Sound Off, CC 121 Reset All Controllers, CC 123 All Notes Off, CC 124 Omni Off, CC 125 Omni On. The chart has no value ranges, so ranges stay "0 to 127 assumed". No row has been captured from the owner's device, so none is hardware verified. Separate from the chart, the manual's MPE section says the Y-axis (front-back) is sent as CC 74; the chart itself shows no function at CC 74, so CC 74 is not mapped.
 
 ## CC chart
 | CC | Function | Status |
@@ -139,11 +139,11 @@ Verification note: the chart below was transcribed in an earlier session. In the
 | 127 | - | not listed in chart, unmapped |
 
 Notes on the chart:
-- The printed chart has no entry for Joystick Y+ (only X+, X- and Y-). Test on the unit.
+- The printed chart has no entry for Joystick Y+ (only X+, X- and Y-). The MPE section says Y is sent as CC 74, but that is not a chart row; test on the unit.
 - CC 8 is blank in the printed chart (no dash, no name).
 - The manual gives no value ranges or scaling per CC. Capture them from the unit.
 
-## MIDI behaviour (official: same COBALT8 manual v2, MIDI chapter; same Cobalt8 vs Cobalt8M caveat; untested on hardware)
+## MIDI behaviour (official: COBALT8M manual v2, MIDI chapter; untested on hardware)
 - Channel: set in the on-screen settings or in MODALapp.
 - All encoders send the matching CC when changed (depends on SHIFT or panel state). Keys send notes for their octave and scale.
 - The keyboard sends channel aftertouch; the joystick can send pitch bend.
